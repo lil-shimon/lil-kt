@@ -8,7 +8,10 @@ import { GetUsersQuery } from '../types/generated/graphql'
 import { Layout } from '../components/Layout'
 
 const FetchMain: VFC = () => {
-  const { data, error, loading } = useQuery<GetUsersQuery>(GET_USERS)
+  // fetchPolicyは何も指定しない場合、最初キャッシュを見に行く
+  const { data, error, loading } = useQuery<GetUsersQuery>(GET_USERS, {
+    fetchPolicy: 'network-only',
+  })
 
   if (loading)
     return (
