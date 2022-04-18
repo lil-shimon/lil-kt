@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ApolloProvider client={client}>
+      {/* @ts-ignore*/}
       <Component {...pageProps} />
     </ApolloProvider>
   )

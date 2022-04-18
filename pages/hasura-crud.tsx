@@ -30,11 +30,13 @@ const HasuraCRUD: VFC = () => {
    */
   const [insert_users_one] = useMutation<CreateUserMutation>(CREATE_USER, {
     // insert_users_one = 作ったユーザーの情報
+    // @ts-ignore
     update(cache, { data: { insert_users_one } }) {
       const cacheId = cache.identify(insert_users_one)
       cache.modify({
         fields: {
           users(existingUsers, { toReference }) {
+            // @ts-ignore
             return [toReference(cacheId), ...existingUsers]
           }
         }
@@ -47,6 +49,7 @@ const HasuraCRUD: VFC = () => {
    * cacheが自動的に作成されないので後処理が必要
    */
   const [delete_users_by_pk] = useMutation<DeleteUserMutation>(DELETE_USER, {
+    // @ts-ignore
     update(cache, { data: { delete_users_by_pk } }) {
       cache.modify({
         fields: {
@@ -123,6 +126,7 @@ const HasuraCRUD: VFC = () => {
       </form>
       {data?.users.map((user) => {
         return (
+          // @ts-ignore
           <UserItem key={user.id} user={user} delete_users_by_pk={delete_users_by_pk} setEditedUser={setEditedUser} />
         )
       })}
