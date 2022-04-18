@@ -10,7 +10,10 @@ import { Layout } from '../components/Layout'
 const FetchMain: VFC = () => {
   // fetchPolicyは何も指定しない場合、最初キャッシュを見に行く
   const { data, error, loading } = useQuery<GetUsersQuery>(GET_USERS, {
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'network-only', // サーバーサイドに毎回アクセスしcacheを保存する (通信中は何も表示されない)
+    // fetchPolicy: 'cache-and-network' // サーバーサイドに毎回アクセスしcacheを保存する (通信中は既存の存在するキャッシュを一旦表示する)
+    // fetchPolicy: 'no-cache' // 取得時にもcacheが作成されない
+    // fetchPolicy: 'cache-first' // server sideから取得するデータがあまり変わらないアプリの場合有効的
   })
 
   if (loading)
