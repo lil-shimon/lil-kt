@@ -87,3 +87,31 @@ export const DELETE_USER = gql`
     }
   }
 `
+
+/**
+ * Get All Todo
+ */
+export const GET_TODOS = gql`
+  query GetTodos {
+      todos {
+        created_at
+        id
+        title
+        type
+      }
+  }
+`
+
+/**
+ * Create a todo
+ */
+export const CREATE_TODO = gql`
+  mutation CreateTodo($title: String!, $type: Int!) {
+    insert_todos_one(object: { title: $title, type: $type }) {
+      created_at
+      id
+      title
+      type
+    }
+  }
+`

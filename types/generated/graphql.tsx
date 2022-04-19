@@ -17,6 +17,19 @@ export type Scalars = {
   uuid: any;
 };
 
+/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
+export type Int_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['Int']>;
+  _gt?: InputMaybe<Scalars['Int']>;
+  _gte?: InputMaybe<Scalars['Int']>;
+  _in?: InputMaybe<Array<Scalars['Int']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['Int']>;
+  _lte?: InputMaybe<Scalars['Int']>;
+  _neq?: InputMaybe<Scalars['Int']>;
+  _nin?: InputMaybe<Array<Scalars['Int']>>;
+};
+
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['String']>;
@@ -212,6 +225,10 @@ export type Mutation_Root = {
   delete_profiles?: Maybe<Profiles_Mutation_Response>;
   /** delete single row from the table: "profiles" */
   delete_profiles_by_pk?: Maybe<Profiles>;
+  /** delete data from the table: "todos" */
+  delete_todos?: Maybe<Todos_Mutation_Response>;
+  /** delete single row from the table: "todos" */
+  delete_todos_by_pk?: Maybe<Todos>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
   /** delete single row from the table: "users" */
@@ -228,6 +245,10 @@ export type Mutation_Root = {
   insert_profiles?: Maybe<Profiles_Mutation_Response>;
   /** insert a single row into the table: "profiles" */
   insert_profiles_one?: Maybe<Profiles>;
+  /** insert data into the table: "todos" */
+  insert_todos?: Maybe<Todos_Mutation_Response>;
+  /** insert a single row into the table: "todos" */
+  insert_todos_one?: Maybe<Todos>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
@@ -244,6 +265,10 @@ export type Mutation_Root = {
   update_profiles?: Maybe<Profiles_Mutation_Response>;
   /** update single row of the table: "profiles" */
   update_profiles_by_pk?: Maybe<Profiles>;
+  /** update data of the table: "todos" */
+  update_todos?: Maybe<Todos_Mutation_Response>;
+  /** update single row of the table: "todos" */
+  update_todos_by_pk?: Maybe<Todos>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
@@ -283,6 +308,18 @@ export type Mutation_RootDelete_ProfilesArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Profiles_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_TodosArgs = {
+  where: Todos_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Todos_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -342,6 +379,20 @@ export type Mutation_RootInsert_Profiles_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_TodosArgs = {
+  objects: Array<Todos_Insert_Input>;
+  on_conflict?: InputMaybe<Todos_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Todos_OneArgs = {
+  object: Todos_Insert_Input;
+  on_conflict?: InputMaybe<Todos_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_UsersArgs = {
   objects: Array<Users_Insert_Input>;
   on_conflict?: InputMaybe<Users_On_Conflict>;
@@ -394,6 +445,22 @@ export type Mutation_RootUpdate_ProfilesArgs = {
 export type Mutation_RootUpdate_Profiles_By_PkArgs = {
   _set?: InputMaybe<Profiles_Set_Input>;
   pk_columns: Profiles_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_TodosArgs = {
+  _inc?: InputMaybe<Todos_Inc_Input>;
+  _set?: InputMaybe<Todos_Set_Input>;
+  where: Todos_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Todos_By_PkArgs = {
+  _inc?: InputMaybe<Todos_Inc_Input>;
+  _set?: InputMaybe<Todos_Set_Input>;
+  pk_columns: Todos_Pk_Columns_Input;
 };
 
 
@@ -760,6 +827,12 @@ export type Query_Root = {
   profiles_aggregate: Profiles_Aggregate;
   /** fetch data from the table: "profiles" using primary key columns */
   profiles_by_pk?: Maybe<Profiles>;
+  /** fetch data from the table: "todos" */
+  todos: Array<Todos>;
+  /** fetch aggregated fields from the table: "todos" */
+  todos_aggregate: Todos_Aggregate;
+  /** fetch data from the table: "todos" using primary key columns */
+  todos_by_pk?: Maybe<Todos>;
   /** An array relationship */
   users: Array<Users>;
   /** An aggregate relationship */
@@ -838,6 +911,29 @@ export type Query_RootProfiles_By_PkArgs = {
 };
 
 
+export type Query_RootTodosArgs = {
+  distinct_on?: InputMaybe<Array<Todos_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Todos_Order_By>>;
+  where?: InputMaybe<Todos_Bool_Exp>;
+};
+
+
+export type Query_RootTodos_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Todos_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Todos_Order_By>>;
+  where?: InputMaybe<Todos_Bool_Exp>;
+};
+
+
+export type Query_RootTodos_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
 export type Query_RootUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -880,6 +976,12 @@ export type Subscription_Root = {
   profiles_aggregate: Profiles_Aggregate;
   /** fetch data from the table: "profiles" using primary key columns */
   profiles_by_pk?: Maybe<Profiles>;
+  /** fetch data from the table: "todos" */
+  todos: Array<Todos>;
+  /** fetch aggregated fields from the table: "todos" */
+  todos_aggregate: Todos_Aggregate;
+  /** fetch data from the table: "todos" using primary key columns */
+  todos_by_pk?: Maybe<Todos>;
   /** An array relationship */
   users: Array<Users>;
   /** An aggregate relationship */
@@ -958,6 +1060,29 @@ export type Subscription_RootProfiles_By_PkArgs = {
 };
 
 
+export type Subscription_RootTodosArgs = {
+  distinct_on?: InputMaybe<Array<Todos_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Todos_Order_By>>;
+  where?: InputMaybe<Todos_Bool_Exp>;
+};
+
+
+export type Subscription_RootTodos_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Todos_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Todos_Order_By>>;
+  where?: InputMaybe<Todos_Bool_Exp>;
+};
+
+
+export type Subscription_RootTodos_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
 export type Subscription_RootUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -991,6 +1116,202 @@ export type Timestamptz_Comparison_Exp = {
   _lte?: InputMaybe<Scalars['timestamptz']>;
   _neq?: InputMaybe<Scalars['timestamptz']>;
   _nin?: InputMaybe<Array<Scalars['timestamptz']>>;
+};
+
+/** columns and relationships of "todos" */
+export type Todos = {
+  __typename?: 'todos';
+  created_at: Scalars['timestamptz'];
+  id: Scalars['uuid'];
+  title: Scalars['String'];
+  type: Scalars['Int'];
+};
+
+/** aggregated selection of "todos" */
+export type Todos_Aggregate = {
+  __typename?: 'todos_aggregate';
+  aggregate?: Maybe<Todos_Aggregate_Fields>;
+  nodes: Array<Todos>;
+};
+
+/** aggregate fields of "todos" */
+export type Todos_Aggregate_Fields = {
+  __typename?: 'todos_aggregate_fields';
+  avg?: Maybe<Todos_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Todos_Max_Fields>;
+  min?: Maybe<Todos_Min_Fields>;
+  stddev?: Maybe<Todos_Stddev_Fields>;
+  stddev_pop?: Maybe<Todos_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Todos_Stddev_Samp_Fields>;
+  sum?: Maybe<Todos_Sum_Fields>;
+  var_pop?: Maybe<Todos_Var_Pop_Fields>;
+  var_samp?: Maybe<Todos_Var_Samp_Fields>;
+  variance?: Maybe<Todos_Variance_Fields>;
+};
+
+
+/** aggregate fields of "todos" */
+export type Todos_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Todos_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Todos_Avg_Fields = {
+  __typename?: 'todos_avg_fields';
+  type?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "todos". All fields are combined with a logical 'AND'. */
+export type Todos_Bool_Exp = {
+  _and?: InputMaybe<Array<Todos_Bool_Exp>>;
+  _not?: InputMaybe<Todos_Bool_Exp>;
+  _or?: InputMaybe<Array<Todos_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  title?: InputMaybe<String_Comparison_Exp>;
+  type?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "todos" */
+export enum Todos_Constraint {
+  /** unique or primary key constraint */
+  TodosPkey = 'todos_pkey'
+}
+
+/** input type for incrementing numeric columns in table "todos" */
+export type Todos_Inc_Input = {
+  type?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "todos" */
+export type Todos_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  title?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Todos_Max_Fields = {
+  __typename?: 'todos_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  title?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate min on columns */
+export type Todos_Min_Fields = {
+  __typename?: 'todos_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  title?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['Int']>;
+};
+
+/** response of any mutation on the table "todos" */
+export type Todos_Mutation_Response = {
+  __typename?: 'todos_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Todos>;
+};
+
+/** on_conflict condition type for table "todos" */
+export type Todos_On_Conflict = {
+  constraint: Todos_Constraint;
+  update_columns?: Array<Todos_Update_Column>;
+  where?: InputMaybe<Todos_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "todos". */
+export type Todos_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: todos */
+export type Todos_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "todos" */
+export enum Todos_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  Type = 'type'
+}
+
+/** input type for updating data in table "todos" */
+export type Todos_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  title?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Todos_Stddev_Fields = {
+  __typename?: 'todos_stddev_fields';
+  type?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Todos_Stddev_Pop_Fields = {
+  __typename?: 'todos_stddev_pop_fields';
+  type?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Todos_Stddev_Samp_Fields = {
+  __typename?: 'todos_stddev_samp_fields';
+  type?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Todos_Sum_Fields = {
+  __typename?: 'todos_sum_fields';
+  type?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "todos" */
+export enum Todos_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  Type = 'type'
+}
+
+/** aggregate var_pop on columns */
+export type Todos_Var_Pop_Fields = {
+  __typename?: 'todos_var_pop_fields';
+  type?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Todos_Var_Samp_Fields = {
+  __typename?: 'todos_var_samp_fields';
+  type?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Todos_Variance_Fields = {
+  __typename?: 'todos_variance_fields';
+  type?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "users" */
@@ -1269,6 +1590,19 @@ export type DeleteUserMutationVariables = Exact<{
 
 export type DeleteUserMutation = { __typename?: 'mutation_root', delete_users_by_pk?: { __typename?: 'users', id: any, name: string, created_at: any } | null };
 
+export type GetTodosQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTodosQuery = { __typename?: 'query_root', todos: Array<{ __typename?: 'todos', created_at: any, id: any, title: string, type: number }> };
+
+export type CreateTodoMutationVariables = Exact<{
+  title: Scalars['String'];
+  type: Scalars['Int'];
+}>;
+
+
+export type CreateTodoMutation = { __typename?: 'mutation_root', insert_todos_one?: { __typename?: 'todos', created_at: any, id: any, title: string, type: number } | null };
+
 
 export const GetUsersDocument = gql`
     query GetUsers {
@@ -1483,3 +1817,77 @@ export function useDeleteUserMutation(baseOptions?: Apollo.MutationHookOptions<D
 export type DeleteUserMutationHookResult = ReturnType<typeof useDeleteUserMutation>;
 export type DeleteUserMutationResult = Apollo.MutationResult<DeleteUserMutation>;
 export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<DeleteUserMutation, DeleteUserMutationVariables>;
+export const GetTodosDocument = gql`
+    query GetTodos {
+  todos {
+    created_at
+    id
+    title
+    type
+  }
+}
+    `;
+
+/**
+ * __useGetTodosQuery__
+ *
+ * To run a query within a React component, call `useGetTodosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTodosQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTodosQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTodosQuery(baseOptions?: Apollo.QueryHookOptions<GetTodosQuery, GetTodosQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTodosQuery, GetTodosQueryVariables>(GetTodosDocument, options);
+      }
+export function useGetTodosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTodosQuery, GetTodosQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTodosQuery, GetTodosQueryVariables>(GetTodosDocument, options);
+        }
+export type GetTodosQueryHookResult = ReturnType<typeof useGetTodosQuery>;
+export type GetTodosLazyQueryHookResult = ReturnType<typeof useGetTodosLazyQuery>;
+export type GetTodosQueryResult = Apollo.QueryResult<GetTodosQuery, GetTodosQueryVariables>;
+export const CreateTodoDocument = gql`
+    mutation CreateTodo($title: String!, $type: Int!) {
+  insert_todos_one(object: {title: $title, type: $type}) {
+    created_at
+    id
+    title
+    type
+  }
+}
+    `;
+export type CreateTodoMutationFn = Apollo.MutationFunction<CreateTodoMutation, CreateTodoMutationVariables>;
+
+/**
+ * __useCreateTodoMutation__
+ *
+ * To run a mutation, you first call `useCreateTodoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateTodoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createTodoMutation, { data, loading, error }] = useCreateTodoMutation({
+ *   variables: {
+ *      title: // value for 'title'
+ *      type: // value for 'type'
+ *   },
+ * });
+ */
+export function useCreateTodoMutation(baseOptions?: Apollo.MutationHookOptions<CreateTodoMutation, CreateTodoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument, options);
+      }
+export type CreateTodoMutationHookResult = ReturnType<typeof useCreateTodoMutation>;
+export type CreateTodoMutationResult = Apollo.MutationResult<CreateTodoMutation>;
+export type CreateTodoMutationOptions = Apollo.BaseMutationOptions<CreateTodoMutation, CreateTodoMutationVariables>;
