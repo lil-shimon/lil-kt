@@ -18,6 +18,7 @@ export const LilComponent: VFC = () => {
    * Get Todos
    */
   const { data, error } = useQuery<GetTodosQuery>(GET_TODOS, {
+    variables: { type: 0 },
     fetchPolicy: 'cache-and-network'
   })
 

@@ -18,6 +18,7 @@ export const KtComponent: VFC = () => {
    * Get Todos
    */
   const { data, error } = useQuery<GetTodosQuery>(GET_TODOS, {
+    variables: { type: 1 },
     fetchPolicy: 'cache-and-network'
   })
 

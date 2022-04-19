@@ -92,8 +92,8 @@ export const DELETE_USER = gql`
  * Get All Todo
  */
 export const GET_TODOS = gql`
-  query GetTodos {
-      todos {
+  query GetTodos($type: Int!) {
+      todos(where: {type: {_eq: $type}}) {
         created_at
         id
         title

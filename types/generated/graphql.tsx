@@ -1590,7 +1590,9 @@ export type DeleteUserMutationVariables = Exact<{
 
 export type DeleteUserMutation = { __typename?: 'mutation_root', delete_users_by_pk?: { __typename?: 'users', id: any, name: string, created_at: any } | null };
 
-export type GetTodosQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetTodosQueryVariables = Exact<{
+  type: Scalars['Int'];
+}>;
 
 
 export type GetTodosQuery = { __typename?: 'query_root', todos: Array<{ __typename?: 'todos', created_at: any, id: any, title: string, type: number }> };
@@ -1818,8 +1820,8 @@ export type DeleteUserMutationHookResult = ReturnType<typeof useDeleteUserMutati
 export type DeleteUserMutationResult = Apollo.MutationResult<DeleteUserMutation>;
 export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<DeleteUserMutation, DeleteUserMutationVariables>;
 export const GetTodosDocument = gql`
-    query GetTodos {
-  todos {
+    query GetTodos($type: Int!) {
+  todos(where: {type: {_eq: $type}}) {
     created_at
     id
     title
@@ -1840,10 +1842,11 @@ export const GetTodosDocument = gql`
  * @example
  * const { data, loading, error } = useGetTodosQuery({
  *   variables: {
+ *      type: // value for 'type'
  *   },
  * });
  */
-export function useGetTodosQuery(baseOptions?: Apollo.QueryHookOptions<GetTodosQuery, GetTodosQueryVariables>) {
+export function useGetTodosQuery(baseOptions: Apollo.QueryHookOptions<GetTodosQuery, GetTodosQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetTodosQuery, GetTodosQueryVariables>(GetTodosDocument, options);
       }
