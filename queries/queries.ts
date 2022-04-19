@@ -12,15 +12,15 @@ export const GET_USERS = gql`
 `
 
 // cacheからユーザーを新しい情報を取得する (client side)
-// export const GET_USERS_LOCAL = gql`
-//   query GetUsers {
-//     users(order_by: { created_at: asc }) @client {
-//       name
-//       id
-//       created_at
-//     }
-//   }
-// `
+export const GET_USERS_LOCAL = gql`
+  query GetUsers {
+    users(order_by: { created_at: asc }) @client {
+      name
+      id
+      created_at
+    }
+  }
+`
 
 // ユーザーIDを新しい順に取得する
 export const GET_USERIDS = gql`
