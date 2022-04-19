@@ -12,15 +12,15 @@ export const GET_USERS = gql`
 `
 
 // cacheからユーザーを新しい情報を取得する (client side)
-export const GET_USERS_LOCAL = gql`
-  query GetUsers {
-    users(order_by: { created_at: asc }) @client {
-      name
-      id
-      created_at
-    }
-  }
-`
+// export const GET_USERS_LOCAL = gql`
+//   query GetUsers {
+//     users(order_by: { created_at: asc }) @client {
+//       name
+//       id
+//       created_at
+//     }
+//   }
+// `
 
 // ユーザーIDを新しい順に取得する
 export const GET_USERIDS = gql`
@@ -84,6 +84,34 @@ export const DELETE_USER = gql`
       id
       name
       created_at
+    }
+  }
+`
+
+/**
+ * Get All Todo
+ */
+export const GET_TODOS = gql`
+  query GetTodos {
+      todos {
+        created_at
+        id
+        title
+        type
+      }
+  }
+`
+
+/**
+ * Create a todo
+ */
+export const CREATE_TODO = gql`
+  mutation CreateTodo($title: String!, $type: Int!) {
+    insert_todos_one(object: { title: $title, type: $type }) {
+      created_at
+      id
+      title
+      type
     }
   }
 `
