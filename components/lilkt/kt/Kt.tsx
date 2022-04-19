@@ -56,7 +56,7 @@ export const KtComponent: VFC = () => {
       alert(message)
     }
 
-    setTodo({title: "", type: 1})
+    setTodo({ title: '', type: 1 })
   }
 
   if (error) return <Layout title={'lil-kt'}>Error: {error.message}</Layout>

@@ -12,7 +12,7 @@ import { LilPresenter } from './LilPresenter'
  */
 export const LilComponent: VFC = () => {
 
-  const [todo, setTodo] = useState<TodoStateType>({ title: '', type: 1 })
+  const [todo, setTodo] = useState<TodoStateType>({ title: '', type: 0 })
 
   /**
    * Get Todos
@@ -56,7 +56,7 @@ export const LilComponent: VFC = () => {
       alert(message)
     }
 
-    setTodo({title: "", type: 1})
+    setTodo({ title: '', type: 0 })
   }
 
   if (error) return <Layout title={'lil-kt'}>Error: {error.message}</Layout>
