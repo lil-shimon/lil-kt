@@ -18,6 +18,7 @@ export const KtComponent: VFC = () => {
    * Get Todos
    */
   const { data, error } = useQuery<GetTodosQuery>(GET_TODOS, {
+    variables: { type: 1 },
     fetchPolicy: 'cache-and-network'
   })
 
@@ -56,7 +57,7 @@ export const KtComponent: VFC = () => {
       alert(message)
     }
 
-    setTodo({title: "", type: 1})
+    setTodo({ title: '', type: 1 })
   }
 
   if (error) return <Layout title={'lil-kt'}>Error: {error.message}</Layout>
