@@ -75,6 +75,15 @@ export const Layout: VFC<Props> = ({
                 customHooks+memo
               </a>
             </Link>
+
+            <Link href="/lil-kt">
+              <a
+                data-test-id="lil-kt-nav"
+                className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
+              >
+                lil-kt
+              </a>
+            </Link>
           </div>
         </nav>
       </header>
