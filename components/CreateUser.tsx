@@ -14,7 +14,6 @@ export const CreateUser: VFC = () => {
 
   return (
     <>
-      {console.log('Create User rendered')}
       <p className={'mb-3 font-bold'}>Custom Hook + useCallback + memo</p>
       <div className={'mb-3 flex flex-col justify-center items-center'}>
         <label>Text</label>

@@ -9,7 +9,6 @@ export const Child: VFC<Props> = memo(({ printMsg }) => {
 
   return (
     <>
-      {console.log('child rendered')}
       <p>Child Component</p>
       <button
         onClick={printMsg}
