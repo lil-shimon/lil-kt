@@ -40,5 +40,13 @@ describe('Navigation Test Cases', () => {
     // move to makevar page
     userEvent.click(screen.getByTestId('makevar-nav'))
     expect(await screen.findByText('makeVar')).toBeInTheDocument()
+
+    // move to fetch policy
+    userEvent.click(screen.getByTestId('fetchpolicy-nav'))
+    expect(await screen.findByText('Hasura Main Page')).toBeInTheDocument()
+
+    // move to hasura crud
+    userEvent.click(screen.getByTestId('hasura-crud'))
+    expect(await screen.findByText('Hasura CRUD')).toBeInTheDocument()
   })
 })

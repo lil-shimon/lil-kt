@@ -51,7 +51,7 @@ export const Layout: VFC<Props> = ({
 
             <Link href="/hasura-crud">
               <a
-                data-testid="crud-nav"
+                data-testid="hasura-crud"
                 className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
               >
                 CRUD(Hasura)
