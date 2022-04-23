@@ -14,7 +14,7 @@ export type Scalars = {
   Int: number;
   Float: number;
   timestamptz: any;
-  uuid: any;
+  uuid: string;
 };
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
@@ -1559,7 +1559,7 @@ export type GetUsersQuery = { __typename?: 'query_root', users: Array<{ __typena
 export type GetUserIdsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetUserIdsQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: any }> };
+export type GetUserIdsQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: string }> };
 
 export type GetUserByIdQueryVariables = Exact<{
   id: Scalars['uuid'];
