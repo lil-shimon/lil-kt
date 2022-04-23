@@ -24,7 +24,7 @@ export const Layout: VFC<Props> = ({
             <Link href="/">
               <a
                 // for test
-                data-test-id="home-nav"
+                data-testid="home-nav"
                 className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
               >
                 Home
@@ -33,7 +33,7 @@ export const Layout: VFC<Props> = ({
 
             <Link href="/local-state-a">
               <a
-                data-test-id="makevar-nav"
+                data-testid="makevar-nav"
                 className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
               >
                 makeVar
@@ -42,7 +42,7 @@ export const Layout: VFC<Props> = ({
 
             <Link href="/hasura-main">
               <a
-                data-test-id="fetchpolicy-nav"
+                data-testid="fetchpolicy-nav"
                 className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
               >
                 FetchPolicy(Hasura)
@@ -51,7 +51,7 @@ export const Layout: VFC<Props> = ({
 
             <Link href="/hasura-crud">
               <a
-                data-test-id="crud-nav"
+                data-testid="crud-nav"
                 className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
               >
                 CRUD(Hasura)
@@ -60,7 +60,7 @@ export const Layout: VFC<Props> = ({
 
             <Link href="/hasura-ssg">
               <a
-                data-test-id="ssg-nav"
+                data-testid="ssg-nav"
                 className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
               >
                 SSG+ISR(Hasura)
@@ -69,7 +69,7 @@ export const Layout: VFC<Props> = ({
 
             <Link href="/hooks-memo">
               <a
-                data-test-id="memo-nav"
+                data-testid="memo-nav"
                 className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
               >
                 customHooks+memo
@@ -78,7 +78,7 @@ export const Layout: VFC<Props> = ({
 
             <Link href="/lil-kt">
               <a
-                data-test-id="lil-kt-nav"
+                data-testid="lil-kt-nav"
                 className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
               >
                 lil-kt

@@ -7,6 +7,7 @@ import { getPage, initTestHelpers } from 'next-page-tester'
 import { setupServer } from 'msw/node'
 import { handlers } from '../mock/handlers'
 import { cleanup, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 initTestHelpers()
 
@@ -35,5 +36,9 @@ describe('Navigation Test Cases', () => {
     })
     render(page)
     expect(await screen.findByText('Next.js + GraphQL')).toBeInTheDocument()
+
+    // move to makevar page
+    userEvent.click(screen.getByTestId('makevar-nav'))
+    expect(await screen.findByText('makeVar')).toBeInTheDocument()
   })
 })
