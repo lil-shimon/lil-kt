@@ -48,5 +48,16 @@ describe('Navigation Test Cases', () => {
     // move to hasura crud
     userEvent.click(screen.getByTestId('hasura-crud'))
     expect(await screen.findByText('Hasura CRUD')).toBeInTheDocument()
+
+    // move to ssg page
+    // userEvent.click(screen.getByTestId('ssg-nav'))
+    // expect(await screen.findByText('SSG+ISR')).toBeInTheDocument()
+
+    // move to create user page
+    userEvent.click(screen.getByTestId('memo-nav'))
+    expect(await screen.findByText('Custom Hook + useCallback + memo')).toBeInTheDocument()
+
+    userEvent.click(screen.getByTestId('home-nav'))
+    expect(await screen.findByText('Next.js + GraphQL')).toBeInTheDocument()
   })
 })
